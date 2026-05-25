@@ -16,8 +16,8 @@ const pedidos = [
     },
     {
         id:2,
-        cliente: "Claudio",
-        serviço: "Portão Basculante",
+        cliente: "Letici Chaves",
+        serviço: "janela",
         descriçao:"Portão automatico residencial",
         material :"Aço galvanizado",
         cor:"breto fosco",
@@ -69,19 +69,26 @@ if(container){
 
         container.innerHTML += `
         
-        <article class="card">
+        <table class="table table-dark table-bordered"
+                <tbody>
+                    <tr>
+                        <th>Cliente</th>
+                        <td>${pedido.cliente}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>${pedido.status}</td>
+                    </tr>
+                    <tr>
+                        <th>Data do Pedido</th>
+                        <td>${pedido.dataPedido}</td>
+                    </tr>
+                    <tr>
+                        <th>Data de Entrega</th>
+                        <td>${pedido.dataEntrega}</td>
+                    </tr>
+            </table>
 
-            <img src="${pedido.imagem}" alt="${pedido.serviço}">
-
-            <h2>${pedido.serviço}</h2>
-
-            <p>${pedido.cliente}</p>
-
-            <p>${pedido.status}</p>
-
-            <a href="detalhes.html?id=${pedido.id}" class="btn btn-warning">Ver detalhes</a>
-
-        </article>
         
         `;
     });
@@ -147,7 +154,7 @@ if(detalhesContainer){
                         <th>Orçamento</th>
                         <td>${pedido.orçamento}</td>
                     </tr>
-
+            </table>
         </section>
     
     `;
