@@ -69,16 +69,27 @@
 
 
     <main class="container my-5">
-        
-            <h2>Pedidos Recentes</h2>
+        <div class="bg-dark p-4 rouded-4 shadow">
+            <div class="filtros">
+                <input type="text" id="buscarPedido" placeholder="Buscar cliente...">
+
+                <select id="filtroStatus">
+                    <option value="Todos">Todos</option>
+                    <option value="Aberto">Aberto</option>
+                    <option value="Em Produção">Em Produção</option>
+                    <option value="Pronto">Pronto</option>
+                </select>
+            </div>
+                <h2>Pedidos Recentes</h2>
             
-            <section id="cards-container">
+                <section id="cards-container">
 
-            </section>
+                </section>
 
-            <section id="relatio-pedidos">
+                <section id="relatio-pedidos">
 
-            </section>
+                </section>
+        </div>
     </main>
 
     <footer class="bg-dark text-light mt-5">
