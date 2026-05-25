@@ -55,27 +55,38 @@
         </div>
     </header>
 
-    <section class="banner" >
-        <div id="home">
-
-            <div class="content">
-                <h1>Bem-vindo ao Gestor de Pedidos</h1>
-                <p>Sua ferramenta completa para organizar, acompanhar e finalizar serviços industriais com eficiência e rapidez.</p>
-                <button class="btn btn-warning">+ Novo Pedido</button>
-            </div>
-
-        </div>
-    </section>
-
 
     <main class="container my-5">
-        
-            <h2>Pedidos Recentes</h2>
-            
-            <section id="cards-container">
 
-            </section>
-            
+                <form class="card p-4 bg-danger text-light">
+                    <h2>Novo Pedido</h2>
+
+                    <label>Cliente:</label><br>
+                    <input type="text" class="form-control" name="Cliente"><br>
+
+                    <label>Serviços:</label><br>
+                    <input type="text" class="form-control" name="Serviço"><br>
+
+                    <label>Prazo:</label><br>
+                    <input type="date" class="form-control" name="Prazo"><br>
+
+                    <label>Status:</label><br>
+                    <select type="status" class="form-control" name="Status">
+                        <option class="andamento">Em andamento</option>
+                        <option class="pronto">Pronto</option>
+                        <option class="entregue">Entregue</option>
+                        <option class="pago">Pago</option>
+                    </select>  
+
+                    <label>Endereço:</label><br>
+                    <textarea type="descrição" class="form-control" name="Descrição"></textarea><br>
+
+                    <label>imagem:</label><br>
+                    <input type="file" class="form-control"><br>
+
+                    <button type="submit" class="btn btn-warning w-100">Salvar</button>
+                </form>
+            </div>
     </main>
 
     <footer class="bg-dark text-light mt-5">
