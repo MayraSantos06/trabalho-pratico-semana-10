@@ -2,64 +2,84 @@ const pedidos = [
     {
         id:1,
         cliente: "Claudio",
-        serviço: "Portão Basculante",
-        descriçao:"Portão automatico residencial",
+        servico: "Portão Basculante",
+        descricao:"Portão automatico residencial",
         material :"Aço galvanizado",
         cor:"breto fosco",
         medidas:"3m x 2,5m",
         dataPedido:"11/04/2023",
         dataEntrega: "01/05/2023",
-        orçamento:"1.500",
-        status:"pronto",
-        Endereço: "Claudio",
+        orcamento:"1.500",
+        status:"Pronto",
+        Endereco: "Claudio",
         imagem:"img/portao.jpg"
     },
     {
         id:2,
         cliente: "Letici Chaves",
-        serviço: "Corrimão",
-        descriçao:"Corrimão inox para escada interna",
+        servico: "Corrimão",
+        descricao:"Corrimão inox para escada interna",
         material :"Aço inox",
         cor:"prata",
         medidas:"5m",
         dataPedido:"20/04/2023",
         dataEntrega: "12/05/2023",
-        orçamento:"1.800",
+        orcamento:"1.800",
         status:"Em Produção",
-        Endereço: "Av. Terra do nunca,99",
+        Endereco: "Av. Terra do nunca,99",
         imagem:"img/portao.jpg"
     },
     {
         id:3,
         cliente: "Maria Clara",
-        serviço: "Porta de Enrolar",
-        descriçao:"Porta automática para comércio",
+        servico: "Porta de Enrolar",
+        descricao:"Porta automática para comércio",
         material :"Aço reforçado",
         cor:"Azul",
         medidas:"3,5m x 3m",
         dataPedido:"25/04/2023",
         dataEntrega: "18/05/2023",
-        orçamento:"4.500",
-        status:"pronto",
-        Endereço: "São Luiz do Maranhão",
+        orcamento:"4.500",
+        status:"Aguardando Resposta",
+        Endereco: "São Luiz do Maranhão",
         imagem:"img/portao.jpg"
     },
     {
         id:4,
         cliente: "Claudio",
-        serviço: "Portão Basculante",
-        descriçao:"Portão automatico residencial",
+        servico: "Portão Basculante",
+        descricao:"Portão automatico residencial",
         material :"Aço galvanizado",
         cor:"breto fosco",
         medidas:"3m x 2,5m",
         dataPedido:"11/04/2023",
         dataEntrega: "01/05/2023",
-        orçamento:"1.500",
-        status:"pronto",
-        Endereço: "Claudio",
+        orcamento:"1.500",
+        status:"Aguardando Orçamento",
+        Endereco: "Claudio",
         imagem:"img/portao.jpg"
     },
 ]
+
+function resumoPedidos(){
+
+    const totalPedidos = document.getElementById("totalPedidos");
+    if(!totalPedidos) return;
+
+    document.getElementById("totalPedidos").textContent = pedidos.length;
+    document.getElementById("aguardandoOrçamento").textContent =pedidos.filter( pedidos => pedidos.status === "Aguardando Orçamento"
+).length;
+    document.getElementById("aguardandoResposta").textContent = pedidos.filter(pedidos => pedidos.status === "Aguardando Resposta"
+).length; 
+    document.getElementById("emProdução").textContent =  pedidos.filter(
+    pedidos => pedidos.status === "Em Produção"
+).length; 
+    document.getElementById("prontos").textContent = pedidos.filter(
+    pedidos => pedidos.status === "Pronto"
+).length; 
+}
+    resumoPedidos();
+
 
 const container = document.getElementById("cards-container");
 
@@ -90,14 +110,17 @@ if(container){
 
         let classeStatus = "";
 
-        if(pedido.status == "Aberto"){
-            classeStatus = "aberto";
+        if(pedido.status == "Aguardando Orçamento"){
+            classeStatus = "AguardandoOrçamento";
+        }
+        else if (pedido.status == "Aguardando Resposta"){
+            classeStatus  = "AguardandoResposta"
         }
         else if (pedido.status == "Em Produção"){
             classeStatus = "producao";
         }
         else{
-            classeStatus = "concluido";
+            classeStatus = "pronto";
         }
 
         tbody.innerHTML +=`
@@ -164,19 +187,23 @@ if(detalhesContainer){
 
     const params = new URLSearchParams(window.location.search);
 
-    const id = params.get("id");
+    const id = Number(params.get("id"));
 
-    const pedido = pedidos.find(item => item.id == id);
+    const pedido = pedidos.find(item => item.id === id);
+
+    if(!pedido){
+
+        detalhesContainer.innerHTML="<p>Pedido não encontrado</p>";
+    } 
+    else{
 
     detalhesContainer.innerHTML = `
     
         <section class="detalhes">
 
-            <img src="${pedido.imagem}" alt="${pedido.serviço}" width= "50px">
+            <h1>${pedido.servico}</h1>
 
-            <h1>${pedido.serviço}</h1>
-
-            <table class="table table-dark table-bordered">
+            <table class="table table-dark table-bordered px-5">
                 <tbody>
                     <tr>
                         <th>Cliente</th>
@@ -184,7 +211,7 @@ if(detalhesContainer){
                     </tr>
                     <tr>
                         <th>Endereço</th>
-                        <td>${pedido.Endereço}</td>
+                        <td>${pedido.Endereco}</td>
                     </tr>
                     <tr>
                         <th>Status</th>
@@ -192,7 +219,7 @@ if(detalhesContainer){
                     </tr>
                     <tr>
                         <th>Descrição</th>
-                        <td>${pedido.descriçao}</td>
+                        <td>${pedido.descricao}</td>
                     </tr>
                     <tr>
                         <th>Material</th>
@@ -215,10 +242,12 @@ if(detalhesContainer){
                     </tr>
                     <tr>
                         <th>Orçamento</th>
-                        <td>${pedido.orçamento}</td>
+                        <td>${pedido.orcamento}</td>
                     </tr>
+                </tbody>    
             </table>
         </section>
     
     `;
+}
 }

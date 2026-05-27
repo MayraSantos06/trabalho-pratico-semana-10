@@ -30,25 +30,10 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#pedidos">Pedido</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#registros">Registros</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#orçamentos">Orçamentos</a>
+                        <a class="nav-link" href="#pedidos">Pedidos</a>
                     </li>
 
                 </ul>
-
-                <form class="d-flex">
-
-                    <input class="form-control me-2" type="search" placeholder="Buscar pedidos...">
-                    <button class="btn btn-warning">Buscar</button>
-
-                </form>
 
             </div>
 
@@ -68,14 +53,50 @@
     </section>
 
 
-    <main class="container my-5">
-        <div class="bg-dark p-4 rouded-4 shadow">
+    <main class="container-fluid px-5 my-5">
+        <div class="d-flex justify-content-center gap-3 mb-3 flex-nowrap">
+
+            
+                <div class="card bg-dark text-light border-warning text-center py-2 px-4">
+                    <h2 id="totalPedidos"></h2>
+                    <p class="small mb-0">Total de Pedidos</p>
+                </div>
+
+            
+                <div class="card bg-dark text-light border-warning text-center py-2 px-4">
+                    <h2 id="aguardandoOrçamento"></h2>
+                    <p class="small mb-0">Aguardando Orçamento</p>
+                </div>
+            
+
+                <div class="card bg-dark text-light border-warning text-center py-2 px-4">
+                    <h2 id="aguardandoResposta"></h2>
+                    <p class="small mb-0">Aguardando Resposta</p>
+                </div>
+        
+
+            
+                <div class="card bg-dark text-light border-warning text-center py-2 px-4">
+                    <h2 id="emProdução"></h2>
+                    <p class="small mb-0">Em Produção</p>
+                </div>
+
+                <div class="card bg-dark text-light border-warning text-center py-2 px-4">
+                    <h2 id="prontos"></h2>
+                    <p class="small mb-0">Pedidos Prontos</p>
+                </div>
+
+        
+        </div>
+
+        <div class="bg-dark p-4 rounded-4 shadow">
             <div class="filtros">
                 <input type="text" id="buscarPedido" placeholder="Buscar cliente...">
 
                 <select id="filtroStatus">
                     <option value="Todos">Todos</option>
-                    <option value="Aberto">Aberto</option>
+                    <option value="Aguardando Orçamento">Aguardando Orçamento</option>
+                    <option value="Aguardando Resposta">Aguardando Resposta</option>
                     <option value="Em Produção">Em Produção</option>
                     <option value="Pronto">Pronto</option>
                 </select>
