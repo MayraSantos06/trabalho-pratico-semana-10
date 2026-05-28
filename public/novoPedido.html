@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor de pedidos</title>
+    <title>Novo Pedido</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -48,81 +48,88 @@
     </header>
 
 
-    <main class="container my-5">
+    <main class="container my-5 w-100">
+        <h1 class=" mx-auto mb-4" style="max-width: 900px;">Novo Pedido</h1>
+        <form class=" p-4 bg-dark text-light border border-warning shadow-lg mx-auto" style="max-width: 900px;">
+                    
+            <h3>Dados do Cliente</h3>
+            <div class="row ">
 
-                <form class="card p-4 bg-danger text-light">
-                    <h2>Novo Pedido</h2>
+                <div class="col-md-6">
+                    <label>Cliente:</label>
+                    <input type="text" class="form-control mb-3" name="cliente">
+                </div>
+                <div class="col-md-6">
+                    <label>Telefone:</label>
+                    <input type="text" class="form-control mb-3" name="telefone">
+                </div>
+                <div class="col-12">
+                    <label>Endereço:</label>
+                    <input type="text" class="form-control mb-3" name="endereco">
+                </div>
 
-                    <label>Cliente:</label><br>
-                    <input type="text" class="form-control" name="Cliente"><br>
-
-                    <label>Endereço:</label><br>
-                    <textarea type="text" class="form-control" name="Endereço"></textarea><br>
-
-                    <label>Telefone:</label><br>
-                    <textarea type="text" class="form-control" name="Telefone"></textarea><br>
-
-
-                    <label>Serviço:</label><br>
-                    <select type="serviço" class="form-control" name="Serviço">
+                <h3>Dados do Pedido</h3>
+                <div class="col-md-4">
+                    <label>Serviço:</label>
+                    <select class="form-control mb-3" name="servico">
                         <option class="nenhum"> </option>
                         <option class="portao">Portão</option>
                         <option class="janela">Janela</option>
                         <option class="corrimao">Corrimão</option>
                         <option class="grade">Grade</option>
                     </select> 
-
+                </div>
+                <div class="col-md-4">
                     <label>Material:</label><br>
-                    <select type="serviço" class="form-control" name="Serviço">
+                    <select class="form-control mb-3" name="material">
                         <option class="nenhum"> </option>
                         <option class="aço">Aço inox</option>
                         <option class="aço">Aço Carbono</option>
                         <option class="aço">Aço Galvanizado</option>
                         <option class="aluminio">Aluminio</option>
                     </select> 
-
-                    <label>Cor:</label><br>
-                    <textarea type="text" class="form-control" name="Cor"></textarea><br>
-
-                    <label>Medidas:</label><br>
-                    <textarea type="text" class="form-control" name="Madidas" placeholder="ex: 2,00m x 1,00m"></textarea><br>
-
-                    <label>Quantidade:</label><br>
-                    <textarea type="number" class="form-control" name="Quantidade"></textarea><br>
-
-
-                    <label>Prazo:</label><br>
-                    <input type="date" class="form-control" name="Prazo"><br>
-
-                    <label>Status:</label><br>
-                    <select type="status" class="form-control" name="Status">
-                        <option class="andamento">Em andamento</option>
-                        <option class="pronto">Pronto</option>
-                        <option class="entregue">Entregue</option>
-                        <option class="pago">Pago</option>
-                    </select>  
-
-                    
-                    <label>Observações:</label><br>
-                    <textarea type="text" class="form-control" name="observacoes"></textarea><br>
-
-                    <label>Responsável:</label><br>
-                    <select type="status" class="form-control" name="Status">
+                </div>
+                <div class="col-md-4">
+                    <label>Cor:</label>
+                    <input type="text" class="form-control mb-3" name="cor">
+                </div>
+                <div class="col-md-4">
+                    <label>Medidas:</label>
+                    <input type="text" class="form-control mb-3" name="medidas" placeholder="ex: 2,00m x 1,00m">
+                </div>
+                <div class="col-md-4">
+                    <label>Quantidade:</label>
+                    <input type="number" class="form-control mb-3" name="quantidade">
+                </div>
+                <div class="col-md-3">
+                    <label>Prazo:</label>
+                    <input type="date" class="form-control mb-3" name="prazo">
+                </div>
+                <div class="col-12">
+                    <label>Observações:</label>
+                    <textarea type="text" class="form-control mb-3" name="observacoes"></textarea>
+                </div>    
+                <div class="col-md-6">
+                    <label>Responsável:</label>
+                    <select type="status" class="form-control mb-3" name="responsavel">
                         <option class="nome"> </option>
                         <option class="nome">Lady Gaga</option>
                         <option class="nome">Xuxa</option>
                         <option class="nome">Luciano Huck</option>
                     </select> 
-
-                    <label>Orçamento:</label><br>
-                    <input type="number" step="0.01" min="0.00" class="form-control" name="Orçamento"><br>
-
-                    <label>imagem:</label><br>
-                    <input type="file" class="form-control"><br>
-
-                    <button type="submit" class="btn btn-warning w-100">Salvar</button>
-                </form>
+                </div>
+                <div class="col-md-6">   
+                    <label>Orçamento:</label>
+                    <input type="number" step="0.01" min="0.00" class="form-control mb-3" name="
+                    orcamento">
+                </div> 
+                <div class="col-12">
+                    <label>imagem:</label>
+                    <input type="file" class="form-control mb-4">
+                </div>
+                    <button type="submit" class="btn btn-warning w-100 mb-3">Salvar</button>
             </div>
+        </form>
     </main>
 
     <footer class="bg-dark text-light mt-5">
