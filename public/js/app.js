@@ -2,61 +2,109 @@ const pedidos = [
     {
         id:1,
         cliente: "Claudio",
+        Endereco: "Claudio",
+        telefone: "38 988667147",
         servico: "Portão Basculante",
-        descricao:"Portão automatico residencial",
         material :"Aço galvanizado",
         cor:"breto fosco",
         medidas:"3m x 2,5m",
-        dataPedido:"11/04/2023",
+        quantidade:"1",
         dataEntrega: "01/05/2023",
-        orcamento:"1.500",
+        dataPedido:"11/04/2023",
         status:"Pronto",
-        Endereco: "Claudio",
+        observacoes:"Portão automatico residencial",
+        responsavel:"Lady Gaga",
+        orcamento:"1.500",
         imagem:"img/portao.jpg"
     },
     {
         id:2,
-        cliente: "Letici Chaves",
-        servico: "Corrimão",
-        descricao:"Corrimão inox para escada interna",
-        material :"Aço inox",
-        cor:"prata",
-        medidas:"5m",
-        dataPedido:"20/04/2023",
-        dataEntrega: "12/05/2023",
-        orcamento:"1.800",
+        cliente: "Leticia Abreu",
+        Endereco: "Ribeirão das Trevas",
+        telefone: "38 988667147",
+        servico: "Portão Basculante",
+        material :"Aço galvanizado",
+        cor:"breto fosco",
+        medidas:"3m x 2,5m",
+        quantidade:"1",
+        dataEntrega: "01/05/2023",
+        dataPedido:"11/04/2023",
         status:"Em Produção",
-        Endereco: "Av. Terra do nunca,99",
+        observacoes:"Portão automatico residencial",
+        responsavel:"Lady Gaga",
+        orcamento:"2.500",
         imagem:"img/portao.jpg"
     },
     {
         id:3,
         cliente: "Maria Clara",
-        servico: "Porta de Enrolar",
-        descricao:"Porta automática para comércio",
-        material :"Aço reforçado",
-        cor:"Azul",
-        medidas:"3,5m x 3m",
-        dataPedido:"25/04/2023",
-        dataEntrega: "18/05/2023",
-        orcamento:"4.500",
-        status:"Aguardando Resposta",
         Endereco: "São Luiz do Maranhão",
+        telefone: "38 988667147",
+        servico: "Portão Basculante",
+        material :"Aço galvanizado",
+        cor:"breto fosco",
+        medidas:"3m x 2,5m",
+        quantidade:"1",
+        dataEntrega: "01/05/2023",
+        dataPedido:"11/04/2023",
+        status:"Aguardando Orçamento",
+        observacoes:"Portão automatico residencial",
+        responsavel:"Lady Gaga",
+        orcamento:"1.500",
         imagem:"img/portao.jpg"
     },
     {
         id:4,
-        cliente: "Claudio",
+        cliente: "kemilly",
+        Endereco: "Onde Judas Perdeu as Meias",
+        telefone: "38 988667147",
         servico: "Portão Basculante",
-        descricao:"Portão automatico residencial",
         material :"Aço galvanizado",
         cor:"breto fosco",
         medidas:"3m x 2,5m",
-        dataPedido:"11/04/2023",
+        quantidade:"1",
         dataEntrega: "01/05/2023",
+        dataPedido:"11/04/2023",
+        status:"Aguardando Resposta",
+        observacoes:"Portão automatico residencial",
+        responsavel:"Lady Gaga",
         orcamento:"1.500",
-        status:"Aguardando Orçamento",
-        Endereco: "Claudio",
+        imagem:"img/portao.jpg"
+    },
+    {
+        id:5,
+        cliente: "Pricilla",
+        Endereco: "São Paulo",
+        telefone: "38 988667147",
+        servico: "Portão Basculante",
+        material :"Aço galvanizado",
+        cor:"breto fosco",
+        medidas:"3m x 2,5m",
+        quantidade:"1",
+        dataEntrega: "01/05/2023",
+        dataPedido:"11/04/2023",
+        status:"Em produção",
+        observacoes:"Portão automatico residencial",
+        responsavel:"Lady Gaga",
+        orcamento:"1.500",
+        imagem:"img/portao.jpg"
+    },
+    {
+        id:1,
+        cliente: "Mayra",
+        Endereco: "Tres Marias",
+        telefone: "38 988667147",
+        servico: "Portão Basculante",
+        material :"Aço galvanizado",
+        cor:"breto fosco",
+        medidas:"3m x 2,5m",
+        quantidade:"1",
+        dataEntrega: "01/05/2023",
+        dataPedido:"11/04/2023",
+        status:"Pronto",
+        observacoes:"Portão automatico residencial",
+        responsavel:"Lady Gaga",
+        orcamento:"1.500",
         imagem:"img/portao.jpg"
     },
 ]
@@ -140,11 +188,9 @@ if(container){
             <td>${pedido.dataEntrega}</td>
 
             <td class="acoes">
-
-                <a href="detalhes.html?id=${pedido.id}">
-                    Detalhes
-                </a>
-
+                    <a class="btn btn-outline-warning" href="detalhes.html?id=${pedido.id}">
+                        Detalhes
+                    </a>
             </td>
 
         </tr>
@@ -214,12 +260,12 @@ if(detalhesContainer){
                         <td>${pedido.Endereco}</td>
                     </tr>
                     <tr>
-                        <th>Status</th>
-                        <td>${pedido.status}</td>
+                        <th>Telefone</th>
+                        <td>${pedido.telefone}</td>
                     </tr>
                     <tr>
-                        <th>Descrição</th>
-                        <td>${pedido.descricao}</td>
+                        <th>Serviço</th>
+                        <td>${pedido.servico}</td>
                     </tr>
                     <tr>
                         <th>Material</th>
@@ -228,17 +274,34 @@ if(detalhesContainer){
                     <tr>
                         <th>Cor</th>
                         <td>${pedido.cor}</td>
-                    </tr><tr>
+                    </tr>
+                    <tr>
                         <th>Medidas</th>
                         <td>${pedido.medidas}</td>
+                    </tr>
+                    <tr>
+                        <th>Quantidade</th>
+                        <td>${pedido.quantidade}</td>
+                    </tr>
+                    <tr>
+                        <th>Data de Entrega</th>
+                        <td>${pedido.dataEntrega}</td>
                     </tr>
                     <tr>
                         <th>Data do Pedido</th>
                         <td>${pedido.dataPedido}</td>
                     </tr>
                     <tr>
-                        <th>Data de Entrega</th>
-                        <td>${pedido.dataEntrega}</td>
+                        <th>Status</th>
+                        <td>${pedido.status}</td>
+                    </tr>
+                    <tr>
+                        <th>Observações</th>
+                        <td>${pedido.observacoes}</td>
+                    </tr>
+                    <tr>
+                        <th>Responsável</th>
+                        <td>${pedido.responsavel}</td>
                     </tr>
                     <tr>
                         <th>Orçamento</th>

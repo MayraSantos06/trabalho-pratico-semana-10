@@ -56,8 +56,40 @@
                     <label>Cliente:</label><br>
                     <input type="text" class="form-control" name="Cliente"><br>
 
-                    <label>Serviços:</label><br>
-                    <input type="text" class="form-control" name="Serviço"><br>
+                    <label>Endereço:</label><br>
+                    <textarea type="text" class="form-control" name="Endereço"></textarea><br>
+
+                    <label>Telefone:</label><br>
+                    <textarea type="text" class="form-control" name="Telefone"></textarea><br>
+
+
+                    <label>Serviço:</label><br>
+                    <select type="serviço" class="form-control" name="Serviço">
+                        <option class="nenhum"> </option>
+                        <option class="portao">Portão</option>
+                        <option class="janela">Janela</option>
+                        <option class="corrimao">Corrimão</option>
+                        <option class="grade">Grade</option>
+                    </select> 
+
+                    <label>Material:</label><br>
+                    <select type="serviço" class="form-control" name="Serviço">
+                        <option class="nenhum"> </option>
+                        <option class="aço">Aço inox</option>
+                        <option class="aço">Aço Carbono</option>
+                        <option class="aço">Aço Galvanizado</option>
+                        <option class="aluminio">Aluminio</option>
+                    </select> 
+
+                    <label>Cor:</label><br>
+                    <textarea type="text" class="form-control" name="Cor"></textarea><br>
+
+                    <label>Medidas:</label><br>
+                    <textarea type="text" class="form-control" name="Madidas" placeholder="ex: 2,00m x 1,00m"></textarea><br>
+
+                    <label>Quantidade:</label><br>
+                    <textarea type="number" class="form-control" name="Quantidade"></textarea><br>
+
 
                     <label>Prazo:</label><br>
                     <input type="date" class="form-control" name="Prazo"><br>
@@ -70,8 +102,20 @@
                         <option class="pago">Pago</option>
                     </select>  
 
-                    <label>Endereço:</label><br>
-                    <textarea type="descrição" class="form-control" name="Descrição"></textarea><br>
+                    
+                    <label>Observações:</label><br>
+                    <textarea type="text" class="form-control" name="observacoes"></textarea><br>
+
+                    <label>Responsável:</label><br>
+                    <select type="status" class="form-control" name="Status">
+                        <option class="nome"> </option>
+                        <option class="nome">Lady Gaga</option>
+                        <option class="nome">Xuxa</option>
+                        <option class="nome">Luciano Huck</option>
+                    </select> 
+
+                    <label>Orçamento:</label><br>
+                    <input type="number" step="0.01" min="0.00" class="form-control" name="Orçamento"><br>
 
                     <label>imagem:</label><br>
                     <input type="file" class="form-control"><br>
