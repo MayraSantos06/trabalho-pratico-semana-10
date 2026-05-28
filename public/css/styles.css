@@ -15,12 +15,7 @@
 
     padding-left: 50px;
 }
-.andamento,
-.pronto,
-.entregue,
-.pago {
-    font-size: 12px;
-}
+
 .card img{
     width: 100%;
     height: 200px;
@@ -33,7 +28,7 @@
     justify-content: center;
 }
 
-.card{
+.card-pedidos{
     width: 300px;
     padding: 15px;
     border-radius: 10px;
@@ -83,34 +78,6 @@
     border-bottom: 1px solid #000000;
 }
 
-
-.status{
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.AguardandoOrçamento{
-    background: #ffd900;
-    color: #a18900;
-}
-
-.AguardandoResposta{
-    background: #ff9900;
-    color: #fef3c7;
-}
-
-.producao{
-    background: #d92606;
-    color: #dcfce7;
-}
-
-.pronto{
-    background: #dcfce7;
-    color: #16a34a;
-}
-
 .acoes{
     font-size: 18px;
     cursor: pointer;
@@ -127,4 +94,34 @@
 
 .btn-detalhes:hover{
     opacity: 0.8;
+}
+.status{
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.form-select{
+    border: none;
+    font-weight: bold;
+}
+.form-select.status-orcamento{
+    background-color: #ff0000;
+    color: #000;
+}
+
+.form-select.status-resposta{
+    background-color: #ff9900;
+    color: #fff;
+}
+
+.form-select.status-producao{
+    background-color: rgb(219, 199, 20);
+    color: #fff;
+}
+
+.form-select.status-pronto{
+    background-color: green;
+    color: #fff;
 }

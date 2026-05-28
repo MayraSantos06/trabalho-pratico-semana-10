@@ -83,7 +83,7 @@ const pedidos = [
         quantidade:"1",
         dataEntrega: "01/05/2023",
         dataPedido:"11/04/2023",
-        status:"Em produção",
+        status:"Em Produção",
         observacoes:"Portão automatico residencial",
         responsavel:"Lady Gaga",
         orcamento:"1.500",
@@ -159,28 +159,44 @@ if(container){
         let classeStatus = "";
 
         if(pedido.status == "Aguardando Orçamento"){
-            classeStatus = "AguardandoOrçamento";
+            classeStatus = "status-orcamento";
         }
         else if (pedido.status == "Aguardando Resposta"){
-            classeStatus  = "AguardandoResposta"
+            classeStatus  = "status-resposta"
         }
         else if (pedido.status == "Em Produção"){
-            classeStatus = "producao";
+            classeStatus = "status-producao";
         }
         else{
-            classeStatus = "pronto";
+            classeStatus = "status-pronto";
         }
 
+        console.log(classeStatus);
         tbody.innerHTML +=`
 
         <tr>
 
             <td>${pedido.cliente}</td>
-
             <td>
-                <span class="status ${classeStatus}">
-                    ${pedido.status}
-                </span>        
+                <select class="form-select mt-2 ${classeStatus}" onchange="mudarCorSelect(this); alterarStatus(${pedido.id}, this.value)">
+                
+                <option value="Aguardando Orçamento" ${pedido.status === "Aguardando Orçamento" ? "selected" : ""}>
+                Aguardando Orçamento
+                </option>
+
+                <option value="Aguardando Resposta" ${pedido.status === "Aguardando Resposta" ? "selected" : ""}>
+                Aguardando Resposta
+                </option>
+
+                <option value="Em Produção" ${pedido.status === "Em Produção" ? "selected" : ""}>
+                Em Produção
+                </option>
+
+                <option value="Pronto" ${pedido.status === "Pronto" ? "selected" : ""}>
+                Pronto
+                </option>
+                </select>
+
             </td>
 
             <td>${pedido.dataPedido}</td>
@@ -198,6 +214,35 @@ if(container){
     });
 }
 renderPedidos(pedidos);
+function alterarStatus(id, novoStatus){
+    const pedido = pedidos.find(p => p.id === id);
+
+    if(pedido){
+        pedido.status = novoStatus;
+    }
+
+    renderPedidos(pedidos);
+    resumoPedidos();
+};
+function mudarCorSelect(select){
+
+    select.classList.remove(
+        "status-orcamento",
+        "status-resposta",
+        "status-producao",
+        "status-pronto"
+    );
+
+    if (select.value ==="Aguardar Orçamento"){
+        select.classList.add("status-orcamento");
+    } else if(select.value ==="Aguardar Resposta"){
+        select.classList.add("status-resposta");
+} else if(select.value ==="em Produção"){
+        select.classList.add("status-producao");
+} else{
+    select.classList.add("status-pronto");
+}
+};
 const buscarPedido = document.getElementById("buscarPedido");
 
 buscarPedido.addEventListener("input", () => {
