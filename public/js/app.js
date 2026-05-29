@@ -1,5 +1,5 @@
 let pedidos = [];
-
+console.log("JS CARREGADO");
 async function carregarPedidos() {
 
     const resposta = await fetch("http://localhost:3000/pedidos");
@@ -10,6 +10,47 @@ async function carregarPedidos() {
     resumoPedidos();
     
 }
+
+const form = document.getElementById("formPedido");
+console.log(form);
+if(form){
+    form.addEventListener("submit", async(event)=> {
+
+        console.log("clicou em salvar")
+        event.preventDefault();
+
+        const hoje = new Date().toISOString().split("T")[0]
+
+        const novoPedido = {
+        cliente: document.getElementById("cliente").value,
+        Endereco: document.getElementById("endereco").value,
+        telefone: document.getElementById("telefone").value,
+        servico: document.getElementById("servico").value,
+        material: document.getElementById("material").value,
+        cor: document.getElementById("cor").value,
+        medidas: document.getElementById("medidas").value,
+        quantidade: document.getElementById("quantidade").value,
+        dataEntrega: document.getElementById("dataEntrega").value,
+        dataPedido: hoje,
+        status: "Aguardando orçamento",
+        observacoes: document.getElementById("observacoes").value,
+        responsavel: document.getElementById("responsavel").value,
+        orcamento: document.getElementById("orcamento").value,
+        imagem: document.getElementById("imagem").value
+    };
+
+    await fetch("http://localhost:3000/pedidos",{
+        method: "POST",
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(novoPedido)
+    });
+    alert("Pedido cadastro com sucesso!");
+    form.reset();
+    });
+};
+
 
 function resumoPedidos(){
 

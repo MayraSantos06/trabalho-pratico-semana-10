@@ -107,6 +107,42 @@
       "responsavel": "Lady Gaga",
       "orcamento": "1.500",
       "imagem": "img/portao.jpg"
+    },
+    {
+      "cliente": "José Laerte",
+      "Endereco": "rua dos tolos,0",
+      "telefone": "38 988667147",
+      "servico": "Janela",
+      "material": "Aço Galvanizado",
+      "cor": "laranja",
+      "medidas": "3,5m x 4m",
+      "quantidade": "1",
+      "dataEntrega": "2026-05-26",
+      "dataPedido": "2026-05-29",
+      "status": "Aguardando orçamento",
+      "observacoes": "mmm",
+      "responsavel": "Xuxa",
+      "orcamento": "0.13",
+      "imagem": "",
+      "id": 7
+    },
+    {
+      "cliente": "Larissa Fineli",
+      "Endereco": "Castelo encantado das Cores",
+      "telefone": "38 988667147",
+      "servico": "Corrimão",
+      "material": "Aço Galvanizado",
+      "cor": "rosa",
+      "medidas": "3,5m x 4m",
+      "quantidade": "1",
+      "dataEntrega": "2026-07-29",
+      "dataPedido": "2026-05-29",
+      "status": "Aguardando orçamento",
+      "observacoes": "com glitter",
+      "responsavel": "Luciano Huck",
+      "orcamento": "9000",
+      "imagem": "",
+      "id": 8
     }
   ]
 }

@@ -50,28 +50,28 @@
 
     <main class="container my-5 w-100">
         <h1 class=" mx-auto mb-4" style="max-width: 900px;">Novo Pedido</h1>
-        <form class=" p-4 bg-dark text-light border border-warning shadow-lg mx-auto" style="max-width: 900px;">
+        <form id="formPedido" class=" p-4 bg-dark text-light border border-warning shadow-lg mx-auto" style="max-width: 900px;">
                     
             <h3>Dados do Cliente</h3>
             <div class="row ">
 
                 <div class="col-md-6">
                     <label>Cliente:</label>
-                    <input type="text" class="form-control mb-3" name="cliente">
+                    <input type="text" class="form-control mb-3" id="cliente">
                 </div>
                 <div class="col-md-6">
                     <label>Telefone:</label>
-                    <input type="text" class="form-control mb-3" name="telefone">
+                    <input type="text" class="form-control mb-3" id="telefone">
                 </div>
                 <div class="col-12">
                     <label>Endereço:</label>
-                    <input type="text" class="form-control mb-3" name="endereco">
+                    <input type="text" class="form-control mb-3" id="endereco">
                 </div>
 
                 <h3>Dados do Pedido</h3>
                 <div class="col-md-4">
                     <label>Serviço:</label>
-                    <select class="form-control mb-3" name="servico">
+                    <select class="form-control mb-3" id="servico">
                         <option class="nenhum"> </option>
                         <option class="portao">Portão</option>
                         <option class="janela">Janela</option>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="col-md-4">
                     <label>Material:</label><br>
-                    <select class="form-control mb-3" name="material">
+                    <select class="form-control mb-3" id="material">
                         <option class="nenhum"> </option>
                         <option class="aço">Aço inox</option>
                         <option class="aço">Aço Carbono</option>
@@ -91,27 +91,28 @@
                 </div>
                 <div class="col-md-4">
                     <label>Cor:</label>
-                    <input type="text" class="form-control mb-3" name="cor">
+                    <input type="text" class="form-control mb-3" id="cor">
                 </div>
                 <div class="col-md-4">
                     <label>Medidas:</label>
-                    <input type="text" class="form-control mb-3" name="medidas" placeholder="ex: 2,00m x 1,00m">
+                    <input type="text" class="form-control mb-3" id="medidas" placeholder="ex: 2,00m x 1,00m">
                 </div>
                 <div class="col-md-4">
                     <label>Quantidade:</label>
-                    <input type="number" class="form-control mb-3" name="quantidade">
+                    <input type="number" class="form-control mb-3" id="quantidade">
                 </div>
-                <div class="col-md-3">
-                    <label>Prazo:</label>
-                    <input type="date" class="form-control mb-3" name="prazo">
+                <div class="col-md-4">
+                    <label>Data de entrega:</label>
+                    <input type="date" class="form-control mb-3" id="dataEntrega">
                 </div>
                 <div class="col-12">
                     <label>Observações:</label>
-                    <textarea type="text" class="form-control mb-3" name="observacoes"></textarea>
-                </div>    
+                    <textarea type="text" class="form-control mb-3" id="observacoes"></textarea>
+                </div>  
+                
                 <div class="col-md-6">
                     <label>Responsável:</label>
-                    <select type="status" class="form-control mb-3" name="responsavel">
+                    <select type="status" class="form-control mb-3" id="responsavel">
                         <option class="nome"> </option>
                         <option class="nome">Lady Gaga</option>
                         <option class="nome">Xuxa</option>
@@ -120,12 +121,11 @@
                 </div>
                 <div class="col-md-6">   
                     <label>Orçamento:</label>
-                    <input type="number" step="0.01" min="0.00" class="form-control mb-3" name="
-                    orcamento">
+                    <input type="number" step="0.01" min="0.00" class="form-control mb-3" id="orcamento">
                 </div> 
                 <div class="col-12">
                     <label>imagem:</label>
-                    <input type="file" class="form-control mb-4">
+                    <input type="file" class="form-control mb-4" id="imagem">
                 </div>
                     <button type="submit" class="btn btn-warning w-100 mb-3">Salvar</button>
             </div>
