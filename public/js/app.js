@@ -305,7 +305,8 @@ if(detalhesContainer){
 }
     carregarPedidos();
 }
-    
+
+const imagens = ["img1.jpg","img2.jpg","img1.jpg","img2.jpg",]
 
     
 
