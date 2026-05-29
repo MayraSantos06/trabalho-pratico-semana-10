@@ -1,113 +1,15 @@
-const pedidos = [
-    {
-        id:1,
-        cliente: "Claudio",
-        Endereco: "Claudio",
-        telefone: "38 988667147",
-        servico: "Portão Basculante",
-        material :"Aço galvanizado",
-        cor:"breto fosco",
-        medidas:"3m x 2,5m",
-        quantidade:"1",
-        dataEntrega: "01/05/2023",
-        dataPedido:"11/04/2023",
-        status:"Pronto",
-        observacoes:"Portão automatico residencial",
-        responsavel:"Lady Gaga",
-        orcamento:"1.500",
-        imagem:"img/portao.jpg"
-    },
-    {
-        id:2,
-        cliente: "Leticia Abreu",
-        Endereco: "Ribeirão das Trevas",
-        telefone: "38 988667147",
-        servico: "Portão Basculante",
-        material :"Aço galvanizado",
-        cor:"breto fosco",
-        medidas:"3m x 2,5m",
-        quantidade:"1",
-        dataEntrega: "01/05/2023",
-        dataPedido:"11/04/2023",
-        status:"Em Produção",
-        observacoes:"Portão automatico residencial",
-        responsavel:"Lady Gaga",
-        orcamento:"2.500",
-        imagem:"img/portao.jpg"
-    },
-    {
-        id:3,
-        cliente: "Maria Clara",
-        Endereco: "São Luiz do Maranhão",
-        telefone: "38 988667147",
-        servico: "Portão Basculante",
-        material :"Aço galvanizado",
-        cor:"breto fosco",
-        medidas:"3m x 2,5m",
-        quantidade:"1",
-        dataEntrega: "01/05/2023",
-        dataPedido:"11/04/2023",
-        status:"Aguardando Orçamento",
-        observacoes:"Portão automatico residencial",
-        responsavel:"Lady Gaga",
-        orcamento:"1.500",
-        imagem:"img/portao.jpg"
-    },
-    {
-        id:4,
-        cliente: "kemilly",
-        Endereco: "Onde Judas Perdeu as Meias",
-        telefone: "38 988667147",
-        servico: "Portão Basculante",
-        material :"Aço galvanizado",
-        cor:"breto fosco",
-        medidas:"3m x 2,5m",
-        quantidade:"1",
-        dataEntrega: "01/05/2023",
-        dataPedido:"11/04/2023",
-        status:"Aguardando Resposta",
-        observacoes:"Portão automatico residencial",
-        responsavel:"Lady Gaga",
-        orcamento:"1.500",
-        imagem:"img/portao.jpg"
-    },
-    {
-        id:5,
-        cliente: "Pricilla",
-        Endereco: "São Paulo",
-        telefone: "38 988667147",
-        servico: "Portão Basculante",
-        material :"Aço galvanizado",
-        cor:"breto fosco",
-        medidas:"3m x 2,5m",
-        quantidade:"1",
-        dataEntrega: "01/05/2023",
-        dataPedido:"11/04/2023",
-        status:"Em Produção",
-        observacoes:"Portão automatico residencial",
-        responsavel:"Lady Gaga",
-        orcamento:"1.500",
-        imagem:"img/portao.jpg"
-    },
-    {
-        id:1,
-        cliente: "Mayra",
-        Endereco: "Tres Marias",
-        telefone: "38 988667147",
-        servico: "Portão Basculante",
-        material :"Aço galvanizado",
-        cor:"breto fosco",
-        medidas:"3m x 2,5m",
-        quantidade:"1",
-        dataEntrega: "01/05/2023",
-        dataPedido:"11/04/2023",
-        status:"Pronto",
-        observacoes:"Portão automatico residencial",
-        responsavel:"Lady Gaga",
-        orcamento:"1.500",
-        imagem:"img/portao.jpg"
-    },
-]
+let pedidos = [];
+
+async function carregarPedidos() {
+
+    const resposta = await fetch("http://localhost:3000/pedidos");
+
+    pedidos = await resposta.json();
+
+    renderPedidos(pedidos);
+    resumoPedidos();
+    
+}
 
 function resumoPedidos(){
 
@@ -178,7 +80,7 @@ if(container){
 
             <td>${pedido.cliente}</td>
             <td>
-                <select class="form-select mt-2 ${classeStatus}" onchange="mudarCorSelect(this); alterarStatus(${pedido.id}, this.value)">
+                <select class="form-select mt-2 ${classeStatus}" onchange="alterarStatus(${pedido.id}, this.value)">
                 
                 <option value="Aguardando Orçamento" ${pedido.status === "Aguardando Orçamento" ? "selected" : ""}>
                 Aguardando Orçamento
@@ -213,36 +115,31 @@ if(container){
         `;
     });
 }
+
+carregarPedidos();
+
 renderPedidos(pedidos);
-function alterarStatus(id, novoStatus){
+
+async function alterarStatus(id, novoStatus){
     const pedido = pedidos.find(p => p.id === id);
 
     if(pedido){
         pedido.status = novoStatus;
+
+        await fetch(`http://localhost:3000/pedidos/${id}`,{
+
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(pedido)
+        });
+
+        carregarPedidos();
     }
 
-    renderPedidos(pedidos);
-    resumoPedidos();
-};
-function mudarCorSelect(select){
-
-    select.classList.remove(
-        "status-orcamento",
-        "status-resposta",
-        "status-producao",
-        "status-pronto"
-    );
-
-    if (select.value ==="Aguardar Orçamento"){
-        select.classList.add("status-orcamento");
-    } else if(select.value ==="Aguardar Resposta"){
-        select.classList.add("status-resposta");
-} else if(select.value ==="em Produção"){
-        select.classList.add("status-producao");
-} else{
-    select.classList.add("status-pronto");
 }
-};
+
 const buscarPedido = document.getElementById("buscarPedido");
 
 buscarPedido.addEventListener("input", () => {
@@ -276,13 +173,19 @@ const detalhesContainer = document.getElementById("detalhes-container");
 
 if(detalhesContainer){
 
-    const params = new URLSearchParams(window.location.search);
+    async function carregarPedidos() {
 
-    const id = Number(params.get("id"));
+        const resposta = await fetch("http://localhost:3000/pedidos");
 
-    const pedido = pedidos.find(item => item.id === id);
+        const pedidos = await resposta.json();
+        
+        const params = new URLSearchParams(window.location.search);
+        
+        const id = Number(params.get("id"));
 
-    if(!pedido){
+        const pedido = pedidos.find(item => item.id === id);
+
+        if(!pedido){
 
         detalhesContainer.innerHTML="<p>Pedido não encontrado</p>";
     } 
@@ -359,3 +262,10 @@ if(detalhesContainer){
     `;
 }
 }
+    carregarPedidos();
+}
+    
+
+    
+
+    
