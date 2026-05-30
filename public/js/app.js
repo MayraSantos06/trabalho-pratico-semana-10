@@ -1,5 +1,5 @@
 let pedidos = [];
-console.log("JS CARREGADO");
+
 async function carregarPedidos() {
 
     const resposta = await fetch("http://localhost:3000/pedidos");
