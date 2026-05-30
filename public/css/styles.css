@@ -1,11 +1,24 @@
+.container{
+    max-width: 1200px;
+    margin:0 auto;
+    padding: 20px;
+}
 .carrossel {
     max-width: 900px;
     margin: 20px auto;
 }
 
 .carousel-item img {
-    height: 400px;
+    height: 350px;
     object-fit: cover;
+    border-radius: 12px;
+}
+.btn-novo{
+    background: #ffc107;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: bold;
 }
 .card img{
     width: 100%;
@@ -20,9 +33,15 @@
 }
 
 .card-pedidos{
+    background: #1f2630;
     width: 300px;
     padding: 15px;
-    border-radius: 10px;
+    border: 1px solid #ffc107;
+    border-radius: 12px;
+    transition: .3s;
+}
+.card-pedidos:hover{
+    transform: translateY(-5px);
 }
 .detalhes img{
     width: 500px;
@@ -55,11 +74,15 @@
 
 .tabela-pedidos{
     width: 100%;
+    background: #1f2630;
+    border-radius: 12px;
     border-collapse: collapse;
+    overflow: hidden;
 }
 
 .tabela-pedidos th{
-    color: #f5f5f5;
+    background: #ffc107;
+    color :#000;
     padding: 15px;
     text-align: left;
 }
@@ -98,25 +121,25 @@
     font-weight: bold;
 }
 .form-select.status-orcamento{
-    background-color: #ffd900 !important;
-    color: #000 !important;
+    background-color: #aa0202 !important;
+    color: #fff !important;
     border: none;
 }
 
 .form-select.status-resposta{
-    background-color: #ff9900 !important;
+    background-color: #ff8800 !important;
     color: #fff !important;
     border: none;
 }
 
 .form-select.status-producao{
-    background-color: orange !important;
+    background-color: rgb(255, 182, 47) !important;
     color: #fff !important;
     border: none;
 }
 
 .form-select.status-pronto{
-    background-color: green !important;
+    background-color: rgb(8, 102, 8) !important;
     color: #fff !important;
     border: none;
 }

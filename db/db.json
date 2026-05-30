@@ -1,24 +1,6 @@
 {
   "pedidos": [
     {
-      "id": 2,
-      "cliente": "Leticia Abreu",
-      "Endereco": "Ribeirão das Trevas",
-      "telefone": "38 988667147",
-      "servico": "Portão Basculante",
-      "material": "Aço galvanizado",
-      "cor": "breto fosco",
-      "medidas": "3m x 2,5m",
-      "quantidade": "1",
-      "dataEntrega": "01/05/2023",
-      "dataPedido": "11/04/2023",
-      "status": "Em Produção",
-      "observacoes": "Portão automatico residencial",
-      "responsavel": "Lady Gaga",
-      "orcamento": "2.500",
-      "imagem": "img/portao.jpg"
-    },
-    {
       "id": 3,
       "cliente": "Maria Clara",
       "Endereco": "São Luiz do Maranhão",
@@ -101,7 +83,7 @@
       "quantidade": "1",
       "dataEntrega": "2026-05-26",
       "dataPedido": "2026-05-29",
-      "status": "Aguardando orçamento",
+      "status": "Em Produção",
       "observacoes": "mmm",
       "responsavel": "Xuxa",
       "orcamento": "0.13",
@@ -119,7 +101,7 @@
       "quantidade": "1",
       "dataEntrega": "2026-07-29",
       "dataPedido": "2026-05-29",
-      "status": "Aguardando orçamento",
+      "status": "Aguardando Resposta",
       "observacoes": "com glitter",
       "responsavel": "Luciano Huck",
       "orcamento": "9000",
