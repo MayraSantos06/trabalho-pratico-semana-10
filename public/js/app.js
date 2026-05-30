@@ -32,7 +32,7 @@ if(form){
         quantidade: document.getElementById("quantidade").value,
         dataEntrega: document.getElementById("dataEntrega").value,
         dataPedido: hoje,
-        status: "Aguardando orçamento",
+        status: "Aguardando Orçamento",
         observacoes: document.getElementById("observacoes").value,
         responsavel: document.getElementById("responsavel").value,
         orcamento: document.getElementById("orcamento").value,
@@ -84,6 +84,7 @@ if(container){
                         <th>Status</th>
                         <th>Data do Pedido</th>
                         <th>Data de Entrega</th>
+                        <th>Ações</th>
                     </tr>
                 </thead> 
 
@@ -147,19 +148,34 @@ if(container){
             <td>${pedido.dataEntrega}</td>
 
             <td class="acoes">
-                    <a class="btn btn-outline-warning" href="detalhes.html?id=${pedido.id}">
-                        Detalhes
-                    </a>
+                <a class="btn btn-outline-warning" href="detalhes.html?id=${pedido.id}">
+                    Detalhes
+                </a>
+                <a class="btn btn-outline-warning" onclick="deletarPedido(${pedido.id})">
+                    <img src="img/lixeira.png" width="20" height="20">
+                </a>
             </td>
 
         </tr>
         `;
     });
 }
-
+}
 carregarPedidos();
 
-renderPedidos(pedidos);
+// DELETAR PEDIDO//
+async function deletarPedido(id) {
+
+    const confirmar = confirm("Tem certeza que deseja deletar este pedido?")
+
+    if(!confirmar) return;
+
+    await fetch(`http://localhost:3000/pedidos/${id}`,{
+        method:"DELETE"
+    });
+    carregarPedidos();
+}
+    
 
 async function alterarStatus(id, novoStatus){
     const pedido = pedidos.find(p => p.id === id);
@@ -183,7 +199,8 @@ async function alterarStatus(id, novoStatus){
 
 const buscarPedido = document.getElementById("buscarPedido");
 
-buscarPedido.addEventListener("input", () => {
+if (buscarPedido){
+    buscarPedido.addEventListener("input", () => {
 
     const valor = buscarPedido.value.toLowerCase();
 
@@ -192,10 +209,13 @@ buscarPedido.addEventListener("input", () => {
     );
     renderPedidos(filtrados)
 });
+}
+
 
 const filtroStatus = document.getElementById("filtroStatus");
 
-filtroStatus.addEventListener("change", () => {
+if (filtroStatus){
+    filtroStatus.addEventListener("change", () => {
     const valor =filtroStatus.value;
 
     if(valor == "Todos"){
@@ -208,7 +228,6 @@ filtroStatus.addEventListener("change", () => {
     }
 });
 }
-
 
 const detalhesContainer = document.getElementById("detalhes-container");
 
@@ -306,7 +325,6 @@ if(detalhesContainer){
     carregarPedidos();
 }
 
-const imagens = ["img1.jpg","img2.jpg","img1.jpg","img2.jpg",]
 
     
 
