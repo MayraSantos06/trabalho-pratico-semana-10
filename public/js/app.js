@@ -37,12 +37,7 @@ async function carregarPedidoEdicao() {
 
 async function salvarEdição(event) {
 
-    const formEditar = document.getElementById("formEditar");
-
-    if(formEditar){
-        carregarPedidoEdicao();
-        formEditar.addEventListener("submit", salvarEdição);
-}
+   
     event.preventDefault();
 
     const params = new URLSearchParams(window.location.search);
@@ -326,9 +321,7 @@ if(detalhesContainer){
         <section class="detalhes">
 
             <h1>${pedido.servico}</h1>
-            ${pedido.imagem ? `
-            <img src="${pedido.imagem}" class="img-fluid rounded mb-3" style="max-width:400px">` : ""}
-
+            
             <table class="table table-dark table-bordered px-5">
                 <tbody>
                     <tr>
@@ -403,4 +396,11 @@ if(detalhesContainer){
 }
     }
     carregarPedidos();
+}
+
+const formEditar = document.getElementById("formEditar");
+
+    if(formEditar){
+        carregarPedidoEdicao();
+        formEditar.addEventListener("submit", salvarEdição);
 }
