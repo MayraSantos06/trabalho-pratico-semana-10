@@ -221,10 +221,10 @@ if(container){
                     Detalhes
                 </a>
                 <a class="btn btn-outline-warning" onclick="deletarPedido(${pedido.id})">
-                    <img src="img/lixeira.png" width="20" height="20">
+                    <img src="img/lixeira.png" width="16" height="16">
                 </a>
                 <a class="btn btn-outline-warning" href="editarPedido.html?id=${pedido.id}">
-                    <img src="img/editar-texto.png" alt="editar" width="20" height="20">
+                    <img src="img/editar-texto.png" alt="editar" width="16" height="16">
                 </a>
             </td>
 
