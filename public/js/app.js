@@ -11,6 +11,73 @@ async function carregarPedidos() {
     
 }
 
+async function carregarPedidoEdicao() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    const resposta = await fetch(
+        `http://localhost:3000/pedidos/${id}`
+    );
+
+    const pedido = await resposta.json();
+
+        document.getElementById("cliente").value=pedido.cliente;
+        document.getElementById("endereco").value=pedido.Endereco;
+        document.getElementById("telefone").value=pedido.telefone;
+        document.getElementById("servico").value=pedido.servico;
+        document.getElementById("material").value=pedido.material;
+        document.getElementById("cor").value=pedido.cor;
+        document.getElementById("medidas").value=pedido.medidas;
+        document.getElementById("quantidade").value=pedido.quantidade;
+        document.getElementById("dataEntrega").value=pedido.dataEntrega;
+        document.getElementById("observacoes").value=pedido.observacoes;
+        document.getElementById("responsavel").value=pedido.responsavel;
+        document.getElementById("orcamento").value=pedido.orcamento;
+}
+
+async function salvarEdição(event) {
+
+    const formEditar = document.getElementById("formEditar");
+
+    if(formEditar){
+        carregarPedidoEdicao();
+        formEditar.addEventListener("submit", salvarEdição);
+}
+    event.preventDefault();
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    const pedidoAlterado = {
+        cliente: document.getElementById("cliente").value,
+        Endereco: document.getElementById("endereco").value,
+        telefone: document.getElementById("telefone").value,
+        servico: document.getElementById("servico").value,
+        material: document.getElementById("material").value,
+        cor: document.getElementById("cor").value,
+        medidas: document.getElementById("medidas").value,
+        quantidade: document.getElementById("quantidade").value,
+        dataEntrega: document.getElementById("dataEntrega").value,
+        observacoes: document.getElementById("observacoes").value,
+        responsavel: document.getElementById("responsavel").value,
+        orcamento: document.getElementById("orcamento").value,
+    };
+
+    await fetch(
+        `http://localhost:3000/pedidos/${id}`,
+        {
+            method:"PATCH",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(pedidoAlterado)
+        });
+    alert("Pedido Alterado!");
+    window.location.href="index.html";   
+}
+    
+
+// formulario de novo pedido//
 const form = document.getElementById("formPedido");
 console.log(form);
 if(form){
@@ -36,7 +103,6 @@ if(form){
         observacoes: document.getElementById("observacoes").value,
         responsavel: document.getElementById("responsavel").value,
         orcamento: document.getElementById("orcamento").value,
-        imagem: document.getElementById("imagem").value
     };
 
     await fetch("http://localhost:3000/pedidos",{
@@ -51,7 +117,7 @@ if(form){
     });
 };
 
-
+// resumo dos pedidos em cards//
 function resumoPedidos(){
 
     const totalPedidos = document.getElementById("totalPedidos");
@@ -71,7 +137,7 @@ function resumoPedidos(){
 }
     resumoPedidos();
 
-
+// tabela de pedidos//
 const container = document.getElementById("cards-container");
 
 if(container){
@@ -154,6 +220,9 @@ if(container){
                 <a class="btn btn-outline-warning" onclick="deletarPedido(${pedido.id})">
                     <img src="img/lixeira.png" width="20" height="20">
                 </a>
+                <a class="btn btn-outline-warning" href="editarPedido.html?id=${pedido.id}">
+                    <img src="img/editar-texto.png" alt="editar" width="20" height="20">
+                </a>
             </td>
 
         </tr>
@@ -176,7 +245,7 @@ async function deletarPedido(id) {
     carregarPedidos();
 }
     
-
+// alterar status na tabela//
 async function alterarStatus(id, novoStatus){
     const pedido = pedidos.find(p => p.id === id);
 
@@ -196,7 +265,7 @@ async function alterarStatus(id, novoStatus){
     }
 
 }
-
+// filtro de busca por cliente//
 const buscarPedido = document.getElementById("buscarPedido");
 
 if (buscarPedido){
@@ -211,7 +280,7 @@ if (buscarPedido){
 });
 }
 
-
+// filtro por status//
 const filtroStatus = document.getElementById("filtroStatus");
 
 if (filtroStatus){
@@ -229,6 +298,7 @@ if (filtroStatus){
 });
 }
 
+// pagina de detalhes dos pedidos//
 const detalhesContainer = document.getElementById("detalhes-container");
 
 if(detalhesContainer){
@@ -256,6 +326,8 @@ if(detalhesContainer){
         <section class="detalhes">
 
             <h1>${pedido.servico}</h1>
+            ${pedido.imagem ? `
+            <img src="${pedido.imagem}" class="img-fluid rounded mb-3" style="max-width:400px">` : ""}
 
             <table class="table table-dark table-bordered px-5">
                 <tbody>
@@ -317,15 +389,18 @@ if(detalhesContainer){
                     </tr>
                 </tbody>    
             </table>
+            ${pedido.status === "Pronto" ?`
+                <div class="mt-4">
+                    <input type="file" id="fotoFinal" class="form-control mb-2">
+                    <button class="btn btn-success" onclick="salvarFoto(${pedido.id})">
+                    Salvar Foto</button>
+                </div>
+                `:""}
         </section>
     
     `;
+
 }
-}
+    }
     carregarPedidos();
 }
-
-
-    
-
-    
