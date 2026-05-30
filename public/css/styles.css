@@ -1,3 +1,9 @@
+.navbar-nav{
+    display: none;
+}
+.navbar-collapse{
+    display: none;
+}
 .container{
     max-width: 1200px;
     margin:0 auto;
@@ -6,11 +12,14 @@
 .carrossel {
     max-width: 900px;
     margin: 20px auto;
+    min-height: 500px;
+    padding-left: 50px;
 }
 
 .carousel-item img {
-    height: 350px;
-    object-fit: cover;
+    height: 300px;
+    width: 100%;
+    object-fit: contain;
     border-radius: 12px;
 }
 .btn-novo{
@@ -78,6 +87,9 @@
     border-radius: 12px;
     border-collapse: collapse;
     overflow: hidden;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .tabela-pedidos th{
@@ -95,6 +107,9 @@
 .acoes{
     font-size: 18px;
     cursor: pointer;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
 }
 .btn-detalhes{
     background: #111827;
@@ -142,4 +157,40 @@
     background-color: rgb(8, 102, 8) !important;
     color: #fff !important;
     border: none;
+}
+@media (max-width: 768px){
+    
+    .navbar-nav{
+        display: flex !important;
+    }
+
+    .navbar-collapse{
+        display: block !important;
+    }
+
+}
+
+@media (max-width: 768px){
+
+    .tabela-pedidos{
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .acoes{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .banner{
+        min-height: 250px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    h1{
+        font-size: 1.8rem;
+    }
 }

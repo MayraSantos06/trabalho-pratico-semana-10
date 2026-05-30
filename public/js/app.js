@@ -6,11 +6,14 @@ async function carregarPedidos() {
 
     pedidos = await resposta.json();
 
+    console.log("pedido carregado", pedidos);
+
     renderPedidos(pedidos);
     resumoPedidos();
     
+    
 }
-
+console.log(pedidos);
 async function carregarPedidoEdicao() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
@@ -37,7 +40,7 @@ async function carregarPedidoEdicao() {
 
 async function salvarEdição(event) {
 
-   
+
     event.preventDefault();
 
     const params = new URLSearchParams(window.location.search);
@@ -58,7 +61,7 @@ async function salvarEdição(event) {
         orcamento: document.getElementById("orcamento").value,
     };
 
-    await fetch(
+    const resposta = await fetch(
         `http://localhost:3000/pedidos/${id}`,
         {
             method:"PATCH",
@@ -66,11 +69,15 @@ async function salvarEdição(event) {
                 "Content-Type":"application/json"
             },
             body: JSON.stringify(pedidoAlterado)
-        });
+        }
+    
+);
+    const dados = await resposta.json();
+    console.log("Pedido Atualizado:", dados)
+    
     alert("Pedido Alterado!");
     window.location.href="index.html";   
 }
-    
 
 // formulario de novo pedido//
 const form = document.getElementById("formPedido");
@@ -143,7 +150,7 @@ if(container){
                     <tr>
                         <th>Cliente</th>
                         <th>Status</th>
-                        <th>Data do Pedido</th>
+                        <th>Serviço</th>
                         <th>Data de Entrega</th>
                         <th>Ações</th>
                     </tr>
@@ -154,13 +161,14 @@ if(container){
             </table>    
         `;
 
-        const tbody = document.getElementById("tbody-pedidos");
-        function renderPedidos(lista){
+    const tbody = document.getElementById("tbody-pedidos");
+    function renderPedidos(lista){
 
     tbody.innerHTML = "";
 
     lista.forEach(pedido => {
 
+        console.log("Cliente:", pedido.cliente);
         let classeStatus = "";
 
         if(pedido.status == "Aguardando Orçamento"){
@@ -204,7 +212,7 @@ if(container){
 
             </td>
 
-            <td>${pedido.dataPedido}</td>
+            <td>${pedido.servico}</td>
 
             <td>${pedido.dataEntrega}</td>
 
@@ -321,7 +329,7 @@ if(detalhesContainer){
         <section class="detalhes">
 
             <h1>${pedido.servico}</h1>
-            
+
             <table class="table table-dark table-bordered px-5">
                 <tbody>
                     <tr>
